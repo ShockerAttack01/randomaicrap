@@ -32,7 +32,7 @@ class PrankWindow extends JFrame {
         // Set basic properties for the window
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         if (!windowOpen) {
-            redOverlay.setBackground(new Color(255, 0, 0, 100)); // Semi-transparent red tint
+            redOverlay.setBackground(new Color(255, 7, 7, 100)); // Semi-transparent red tint
             redOverlay.setBounds(0, 0, Toolkit.getDefaultToolkit().getScreenSize().width,
                     Toolkit.getDefaultToolkit().getScreenSize().height);
             redOverlay.setAlwaysOnTop(true);
