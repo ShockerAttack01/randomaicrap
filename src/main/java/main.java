@@ -12,7 +12,7 @@ public class main {
         int windowCount = 1;
 
         // Schedule program exit after 10 seconds
-        new Timer(100000, event -> System.exit(0)).start();
+        new Timer(7000, event -> System.exit(0)).start();
 
         // Create prank windows
         for (int i = 0; i < windowCount; i++) {
@@ -23,17 +23,22 @@ public class main {
 }
 
 class PrankWindow extends JFrame {
-    private Random random = new Random();
+    private final Random random = new Random();
     JWindow redOverlay = new JWindow();
+
+    private static boolean windowOpen = false;
 
     public PrankWindow() {
         // Set basic properties for the window
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        redOverlay.setBackground(new Color(255, 0, 0, 100)); // Semi-transparent red tint
-        redOverlay.setBounds(0, 0, Toolkit.getDefaultToolkit().getScreenSize().width,
-                Toolkit.getDefaultToolkit().getScreenSize().height);
-        redOverlay.setAlwaysOnTop(true);
-        redOverlay.setVisible(true);
+        if (!windowOpen) {
+            redOverlay.setBackground(new Color(255, 0, 0, 100)); // Semi-transparent red tint
+            redOverlay.setBounds(0, 0, Toolkit.getDefaultToolkit().getScreenSize().width,
+                    Toolkit.getDefaultToolkit().getScreenSize().height);
+            redOverlay.setAlwaysOnTop(true);
+            redOverlay.setVisible(true);
+            windowOpen = true;
+        }
 
         // Add a window listener to generate new windows when this one is closed
         addWindowListener(new WindowAdapter() {
